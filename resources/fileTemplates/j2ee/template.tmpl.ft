@@ -1,0 +1,4 @@
+<b:style src="${STYLE_SRC}"/>
+<b:isolate/>
+
+${CONTENT}

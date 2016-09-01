@@ -1,0 +1,66 @@
+<!--suppress XmlUnboundNsPrefix -->
+<idea-plugin version="2">
+    <id>com.basisjs</id>
+    <name>Basis.js framework plugin</name>
+    <version>0.1.3</version>
+    <vendor email="s.melukov@gmail.com" url="http://basisjs.com">Basis.js</vendor>
+
+    <description><![CDATA[
+    <a href="http://basisjs.com">Basis.js</a> integration plugin for JetBrains IntelliJ platform.<br/>
+    <b>Features (there are not much features <i>for now</i>):</b><br/>
+    <i>- remote inspector integration:</i><br/>
+    Allows you to inspect basis.js apps from your favorite IntelliJ-base IDE<br/>
+    <a href="https://youtu.be/JBPkF5beq0g">Video demo</a><br/>
+    <br/>
+    Feel free to contribute!
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="162.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.basisjs.services.Storage"/>
+        <applicationConfigurable instance="com.basisjs.ui.windows.Configuration" groupId="language"/>
+
+        <fileTypeFactory implementation="com.basisjs.fileTypes.L10nFileTypeFactory"/>
+        <fileTypeFactory implementation="com.basisjs.fileTypes.TmplFileTypeFactory"/>
+
+        <fileTemplateGroup implementation="com.basisjs.fileTypes.FileTemplateGroup"/>
+    </extensions>
+    <project-components>
+        <component>
+            <implementation-class>com.basisjs.components.RemoteInspector</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="BasisJS" text="Basis.js" description="Basis.js framework">
+            <add-to-group group-id="MainMenu" relative-to-action="WindowMenu" anchor="before"/>
+            <action class="com.basisjs.actions.BasisJSShowInspectorAction" id="BasisJS.ShowInspector"
+                    text="Show Inspector"/>
+        </group>
+
+        <group id="BasisJS.Create" text="_Create" description="Create new Basis.js file" popup="true">
+            <add-to-group group-id="BasisJS" anchor="first"/>
+            <action id="BasisJS.Create.Template" class="com.basisjs.actions.BasisJSNewTmplAction" text="_Template"
+                    description="Create new Basis.js template" icon="AllIcons.FileTypes.Html"/>
+            <action id="BasisJS.Create.L10n" class="com.basisjs.actions.BasisJSNewL10nAction" text="_L10n"
+                    description="Create new Basis.js localization dictionary" icon="AllIcons.FileTypes.Json"/>
+        </group>
+
+        <group id="BasisJS.New" text="_Basis.js" description="Create new Basis.js file" popup="true"
+               icon="/icons/basisjs.png">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+            <action id="BasisJS.New.Template" class="com.basisjs.actions.BasisJSNewTmplAction" text="_Template"
+                    description="Create new Basis.js template" icon="AllIcons.FileTypes.Html"/>
+            <action id="BasisJS.New.L10n" class="com.basisjs.actions.BasisJSNewL10nAction" text="_L10n"
+                    description="Create new Basis.js localization dictionary" icon="AllIcons.FileTypes.Json"/>
+        </group>
+    </actions>
+</idea-plugin>

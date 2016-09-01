@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2016 Basis.js framework
+  ~ http://basisjs.com
+  -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TextField fx:id="urlText" onKeyPressed="#urlTextKeyPressed" promptText="basis.js server url"
+                           text="http://"/>
+                <WebView fx:id="webView" prefHeight="160.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets top="2.0"/>
+                    </VBox.margin>
+                </WebView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
