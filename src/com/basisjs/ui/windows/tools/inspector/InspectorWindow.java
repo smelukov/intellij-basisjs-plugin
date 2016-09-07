@@ -59,7 +59,7 @@ public class InspectorWindow implements IToolWindowFactory {
     public void destroyWindow(Project project) {
         Platform.runLater(() -> {
             WebConsoleListener.setDefaultListener(null);
-            webView.getEngine().load("about:blank");
+            webView.getEngine().getLoadWorker().cancel();
             jFXPanel.removeAll();
         });
     }
