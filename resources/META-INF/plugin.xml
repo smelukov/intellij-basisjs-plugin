@@ -2,7 +2,7 @@
 <idea-plugin version="2">
     <id>com.basisjs</id>
     <name>Basis.js framework plugin</name>
-    <version>0.1.4</version>
+    <version>0.1.5</version>
     <vendor email="s.melukov@gmail.com" url="http://basisjs.com">Basis.js</vendor>
 
     <description><![CDATA[

@@ -26,7 +26,6 @@ import java.io.IOException;
 
 public class InspectorWindow implements IToolWindowFactory {
     private WebView webView;
-    private WebConsoleListener consoleHandler = (webView, message, lineNumber, sourceId) -> Notificator.getInstance().info(Notificator.INSPECTOR, "Console message", "[" + sourceId + ":" + lineNumber + "] " + message);
     private JFXPanel jFXPanel;
 
     public void createWindow(Project project) {
@@ -36,7 +35,6 @@ public class InspectorWindow implements IToolWindowFactory {
         ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
         Content content = contentFactory.createContent(jFXPanel, "inspector", false);
         toolWindow.getContentManager().addContent(content);
-        WebConsoleListener.setDefaultListener(consoleHandler);
 
         InspectorController sceneInspectorController = new InspectorController();
         FXMLLoader fxmlLoader = new FXMLLoader();
